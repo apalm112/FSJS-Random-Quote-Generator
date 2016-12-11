@@ -46,6 +46,7 @@ function printQuote() {
     var getQuoteBox = document.getElementById('quote-box');
     getQuoteBox.innerHTML = template;
     changeBackgroundColor();
+    checkForRepeats();
 }
 
 function changeBackgroundColor() {
@@ -54,27 +55,27 @@ function changeBackgroundColor() {
     red = Math.floor(Math.random() * 256+1);
     blue = Math.floor(Math.random() * 256+1);
     green = Math.floor(Math.random() * 256+1);
-    var color = 'rgba(' + red + ',' + green + ',' + blue + ',' + 0.7 + ')';
+    var color = 'rgba(' + red + ',' + green + ',' + blue + ',' + 0.9 + ')';
     var getContainer = document.getElementById('bgColor');
-    var getCurrentQuote = quotesShownArray[quotesShownArray.length-2];
+    getCurrentQuote = quotesShownArray[quotesShownArray.length-2];
     if (getQuote !== getCurrentQuote) {
     getContainer.style.backgroundColor = color;
     }
 }
 
-// function checkForRepeats() {
-//     //TODO: stretch goal function to not repeat quotes until all quotes have been shown, use console.log();
-//     This function should: as each quote is added to quotesArray
-//     check to see if that quote is already in the quotesArray
-//     if (quoteShown is in quotesArray)
-//     do not push it to quotesArray
-//     get another random quote
-//     for (var idx=0;idx<quotes.length;idx++) {
-//
-//     }
-//      console.log('new quote: ' + getQuote);
-//      console.log('current quote: ' + getCurrentQuote);
-// }
+function checkForRepeats() {
+    //TODO: stretch goal function to not repeat quotes until all quotes have been shown, use console.log();
+    // This function should: as each quote is added to quotesArray
+    // check to see if that quote is already in the quotesArray
+    // if (quoteShown is in quotesArray)
+    // do not push it to quotesArray
+    // get another random quote
+    for (var idx=0;idx<quotes.length;idx++) {
+
+    }
+     console.log('new quote: ' + getQuote);
+     console.log('current quote: ' + getCurrentQuote);
+}
 
 // This do while loop runs once to load a random quote when the page is first loaded
 do {
