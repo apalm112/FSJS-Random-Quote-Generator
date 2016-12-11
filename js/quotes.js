@@ -25,6 +25,6 @@ var quotes = [
     },
     {
         quote: 'There is only one Lord of the Ring, only one who can bend it to his will, and he does not share power.',
-        source: 'Gandalf, a Wizard & jazz enthusiast',
+        source: 'Gandalf, a Wizard & jazz enthusiast'
     }
 ];

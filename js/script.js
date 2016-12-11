@@ -26,15 +26,15 @@ function printQuote() {
                 var year = quotes[key].year;
             }
         }
-        console.log(year);
         // printQuote does not add for a missing citation or year property
-        // try to weed out props that object does not have
+        // if statement prevents props that the object does not have being added to template
         // constructs a string using this template:
     template = '<p class="quote">' + getRQ + '</p>';
     template += '<p class="source">' + source;
-    if (citation != undefined){
+    if (citation){
         template += '<span class="citation">' + citation + '</span>';
-    } else if (year != undefined) {
+    }
+    if (year) {
     template += '<span class="year">' + year + '</span></p>';
     }
     // printQuote puts final HTML string to the page using:
@@ -49,5 +49,3 @@ function checkForRepeats() {
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-// printQuote();
