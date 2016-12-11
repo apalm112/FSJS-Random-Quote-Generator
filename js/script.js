@@ -50,10 +50,9 @@ function changeBackgroundColor() {
     red = Math.floor(Math.random() * 256+1);
     blue = Math.floor(Math.random() * 256+1);
     green = Math.floor(Math.random() * 256+1);
-    var color = 'rgba(' + red + ',' + green + ',' + blue + '0.3)';
-    var changeColor = '<body style="background-color:' + color + '"></body>';
+    var color = 'rgba(' + red + ',' + green + ',' + blue + ',' + 0.7 + ')';
     var getContainer = document.getElementById('bgColor');
-    getContainer.innerHTML = changeColor;
+    getContainer.style.backgroundColor = color;
 }
 
 // function checkForRepeats() {
@@ -69,9 +68,11 @@ function changeBackgroundColor() {
 //
 // }
 
+// This do while loop runs once to load a random quote when the page is first loaded
 do {
     printQuote();
 } while (false);
+
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
