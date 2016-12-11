@@ -4,23 +4,23 @@ var getRQ;
 var source;
 var citation;
 var year;
+var quoteShown;
+var getCurrentQuote;
 
-var quotesArray = [];  // array for Stretch Goal of not repeating quotes until all have been displayed
-
+var quotesShownArray = [];  // array for Stretch Goal of not repeating quotes until all have been displayed
 
 function getRandomQuote() {
     // selects random quote from quotes array
-    //for (var idx=0;idx<quotes.length;idx++) {} loop for stretch goal
     var rando = Math.floor(Math.random() * quotes.length);
-    // console.log(rando);
-    quotesArray.push( quotes[rando].quote );
-    // console.log(quotes[rando].quote);
+    // adds the selected quote to an array
+    var quoteShown = quotesShownArray.push( quotes[rando].quote );
     getQuote = quotes[rando].quote;
     return getQuote;
 }
-
 function getObjectProps() {
-    // for in loop searches through the objects to find matching quote & then grab that objects corresponding properties for the template
+    /*for in loop searches through the objects to find matching
+    quote & then grabs that objects properties
+    for the template*/
     for (var key in quotes){
         if (quotes[key].quote === getQuote){
             source = quotes[key].source;
@@ -29,16 +29,13 @@ function getObjectProps() {
         }
     }
 }
-
-
 function printQuote() {
     var getRQ = getRandomQuote();
     getObjectProps();
-        // printQuote does not add for a missing citation or year property
-        // if statement prevents props that the object does not have being added to template
-        // constructs a string using this template:
-    template = '<p class="quote">' + getRQ + '</p>';
+    var template = '<p class="quote">' + getRQ + '</p>';
     template += '<p class="source">' + source;
+    /*if statement prevents properties that the object does
+    not have from being added to template*/
     if (citation){
         template += '<span class="citation">' + citation + '</span>';
     }
@@ -48,11 +45,40 @@ function printQuote() {
     // printQuote puts final HTML string to the page using:
     var getQuoteBox = document.getElementById('quote-box');
     getQuoteBox.innerHTML = template;
+    changeBackgroundColor();
 }
 
-function checkForRepeats() {
-    // stretch goal function to not repeat quotes until all quotes have been shown, use console.log();
+function changeBackgroundColor() {
+    /*if new quote is different from current quote
+    then background-color is changed*/
+    red = Math.floor(Math.random() * 256+1);
+    blue = Math.floor(Math.random() * 256+1);
+    green = Math.floor(Math.random() * 256+1);
+    var color = 'rgba(' + red + ',' + green + ',' + blue + ',' + 0.7 + ')';
+    var getContainer = document.getElementById('bgColor');
+    var getCurrentQuote = quotesShownArray[quotesShownArray.length-2];
+    if (getQuote !== getCurrentQuote) {
+    getContainer.style.backgroundColor = color;
+    }
 }
+
+// function checkForRepeats() {
+//     //TODO: stretch goal function to not repeat quotes until all quotes have been shown, use console.log();
+//     This function should: as each quote is added to quotesArray
+//     check to see if that quote is already in the quotesArray
+//     if (quoteShown is in quotesArray)
+//     do not push it to quotesArray
+//     get another random quote
+//     for (var idx=0;idx<quotes.length;idx++) {
+//
+//     }
+//
+// }
+
+// This do while loop runs once to load a random quote when the page is first loaded
+do {
+    printQuote();
+} while (false);
 
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
