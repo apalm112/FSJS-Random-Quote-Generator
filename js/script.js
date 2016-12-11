@@ -5,6 +5,7 @@ var source;
 var citation;
 var year;
 var quoteShown;
+var getCurrentQuote;
 
 var quotesShownArray = [];  // array for Stretch Goal of not repeating quotes until all have been displayed
 
@@ -52,7 +53,13 @@ function changeBackgroundColor() {
     green = Math.floor(Math.random() * 256+1);
     var color = 'rgba(' + red + ',' + green + ',' + blue + ',' + 0.7 + ')';
     var getContainer = document.getElementById('bgColor');
+    var getCurrentQuote = quotesShownArray[quotesShownArray.length-2];
+    console.log(getQuote);
+    console.log(getCurrentQuote + 'ha!');
+    if (getQuote !== getCurrentQuote) {
+      //new Quote        old Quote
     getContainer.style.backgroundColor = color;
+    }
 }
 
 // function checkForRepeats() {
