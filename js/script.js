@@ -26,13 +26,17 @@ function printQuote() {
                 var year = quotes[key].year;
             }
         }
+        console.log(year);
+        // printQuote does not add for a missing citation or year property
+        // try to weed out props that object does not have
+        // constructs a string using this template:
     template = '<p class="quote">' + getRQ + '</p>';
     template += '<p class="source">' + source;
-    // constructs a string using this template:
-    // printQuote does not add for a missing citation or year property
-    template += '<span class="citation">' + citation + '</span>';
+    if (citation != undefined){
+        template += '<span class="citation">' + citation + '</span>';
+    } else if (year != undefined) {
     template += '<span class="year">' + year + '</span></p>';
-
+    }
     // printQuote puts final HTML string to the page using:
     var getQuoteBox = document.getElementById('quote-box');
     getQuoteBox.innerHTML = template;

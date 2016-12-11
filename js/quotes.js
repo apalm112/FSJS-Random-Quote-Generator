@@ -22,5 +22,9 @@ var quotes = [
         source: 'David Bowman',
         citation: '2001: A Space Odyssey',
         year: 1968
+    },
+    {
+        quote: 'There is only one Lord of the Ring, only one who can bend it to his will, and he does not share power.',
+        source: 'Gandalf, a Wizard & jazz enthusiast',
     }
 ];
