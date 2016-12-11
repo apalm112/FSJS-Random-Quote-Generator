@@ -43,10 +43,10 @@ function printQuote() {
     // printQuote puts final HTML string to the page using:
     var getQuoteBox = document.getElementById('quote-box');
     getQuoteBox.innerHTML = template;
+    changeBackgroundColor();
 }
 
 function changeBackgroundColor() {
-    // TODO: changes the background-color when button is clicked
     red = Math.floor(Math.random() * 256+1);
     blue = Math.floor(Math.random() * 256+1);
     green = Math.floor(Math.random() * 256+1);
