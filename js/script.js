@@ -37,7 +37,7 @@ function printQuote() {
         // printQuote does not add for a missing citation or year property
         // if statement prevents props that the object does not have being added to template
         // constructs a string using this template:
-    template = '<p class="quote">' + getRQ + '</p>';
+    var template = '<p class="quote">' + getRQ + '</p>';
     template += '<p class="source">' + source;
     if (citation){
         template += '<span class="citation">' + citation + '</span>';
@@ -50,10 +50,17 @@ function printQuote() {
     getQuoteBox.innerHTML = template;
 }
 
-function checkForRepeats() {
-    // stretch goal function to not repeat quotes until all quotes have been shown, use console.log();
+function changeBackgroundColor() {
+    // TODO: changes the background-color when button is clicked
+    randColor = Math.floor(Math.random() * 256+1);
+    var getContainer = document.getElementById('bgColor');
+    getContainer.innerHTML = '<body style=background-color:rgb(randColor,randColor,randColor);></body>';
 }
 
+
+function checkForRepeats() {
+    //TODO: stretch goal function to not repeat quotes until all quotes have been shown, use console.log();
+}
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+document.getElementById('loadQuote').addEventListener("click", printQuote, changeBackgroundColor, false);
