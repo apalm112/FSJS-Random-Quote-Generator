@@ -18,7 +18,9 @@ function getRandomQuote() {
     return getQuote;
 }
 function getObjectProps() {
-    // for in loop searches through the objects to find matching quote & then grab that objects corresponding properties for the template
+    /*for in loop searches through the objects to find matching
+    quote & then grabs that objects properties
+    for the template*/
     for (var key in quotes){
         if (quotes[key].quote === getQuote){
             source = quotes[key].source;
@@ -30,11 +32,10 @@ function getObjectProps() {
 function printQuote() {
     var getRQ = getRandomQuote();
     getObjectProps();
-        // printQuote does not add for a missing citation or year property
-        // if statement prevents props that the object does not have being added to template
-        // constructs a string using this template:
     var template = '<p class="quote">' + getRQ + '</p>';
     template += '<p class="source">' + source;
+    /*if statement prevents properties that the object does
+    not have from being added to template*/
     if (citation){
         template += '<span class="citation">' + citation + '</span>';
     }
@@ -48,16 +49,15 @@ function printQuote() {
 }
 
 function changeBackgroundColor() {
+    /*if new quote is different from current quote
+    then background-color is changed*/
     red = Math.floor(Math.random() * 256+1);
     blue = Math.floor(Math.random() * 256+1);
     green = Math.floor(Math.random() * 256+1);
     var color = 'rgba(' + red + ',' + green + ',' + blue + ',' + 0.7 + ')';
     var getContainer = document.getElementById('bgColor');
     var getCurrentQuote = quotesShownArray[quotesShownArray.length-2];
-    console.log(getQuote);
-    console.log(getCurrentQuote + 'ha!');
     if (getQuote !== getCurrentQuote) {
-      //new Quote        old Quote
     getContainer.style.backgroundColor = color;
     }
 }
