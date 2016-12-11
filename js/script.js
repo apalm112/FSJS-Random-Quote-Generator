@@ -1,6 +1,9 @@
 // Random Quote Generator for Treehouse Project #1
 var getQuote;
 var getRQ;
+var source;
+var citation;
+var year;
 
 var quotesArray = [];  // array for Stretch Goal of not repeating quotes until all have been displayed
 
@@ -16,16 +19,21 @@ function getRandomQuote() {
     return getQuote;
 }
 
+function getObjectProps() {
+    // for in loop searches through the objects to find matching quote & then grab that objects corresponding properties for the template
+    for (var key in quotes){
+        if (quotes[key].quote === getQuote){
+            source = quotes[key].source;
+            citation = quotes[key].citation;
+            year = quotes[key].year;
+        }
+    }
+}
+
+
 function printQuote() {
     var getRQ = getRandomQuote();
-    // for in loop searches through the objects to find matching quote & then grab that objects corresponding properties for the template
-        for (var key in quotes){
-            if (quotes[key].quote === getQuote){
-                var source = quotes[key].source;
-                var citation = quotes[key].citation;
-                var year = quotes[key].year;
-            }
-        }
+    getObjectProps();
         // printQuote does not add for a missing citation or year property
         // if statement prevents props that the object does not have being added to template
         // constructs a string using this template:
