@@ -6,11 +6,11 @@ var quotesArray = [];  // array for Stretch Goal of not repeating quotes until a
 function getRandomQuote() {
     // selects random quote from quotes array
     //for (var idx=0;idx<quotes.length;idx++) {}
-        var rando = Math.floor(Math.random() * quotes.length);
-        console.log(rando);
-        quotesArray.push( quotes[rando].quote );
-        console.log(quotes[rando].quote);
-
+    var rando = Math.floor(Math.random() * quotes.length);
+    console.log(rando);
+    quotesArray.push( quotes[rando].quote );
+    console.log(quotes[rando].quote);
+    getQuote = quotes[rando].quote;
     return getQuote;
 
 }
