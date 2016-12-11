@@ -72,7 +72,8 @@ function changeBackgroundColor() {
 //     for (var idx=0;idx<quotes.length;idx++) {
 //
 //     }
-//
+//      console.log('new quote: ' + getQuote);
+//      console.log('current quote: ' + getCurrentQuote);
 // }
 
 // This do while loop runs once to load a random quote when the page is first loaded
