@@ -6,6 +6,8 @@ var citation;
 var year;
 var quoteShown;
 var getCurrentQuote;
+var counter =0;
+
 
 var quotesShownArray = [];  // array for Stretch Goal of not repeating quotes until all have been displayed
 
@@ -14,6 +16,7 @@ function getRandomQuote() {
     var rando = Math.floor(Math.random() * quotes.length);
     // adds the selected quote to an array
     var quoteShown = quotesShownArray.push( quotes[rando].quote );
+    // checkForRepeats(); stopping point here
     getQuote = quotes[rando].quote;
     return getQuote;
 }
@@ -29,6 +32,8 @@ function getObjectProps() {
         }
     }
 }
+
+
 function printQuote() {
     var getRQ = getRandomQuote();
     getObjectProps();
@@ -46,20 +51,40 @@ function printQuote() {
     var getQuoteBox = document.getElementById('quote-box');
     getQuoteBox.innerHTML = template;
     changeBackgroundColor();
-    checkForRepeats();
+    // checkForRepeats();
+
 }
 
 function changeBackgroundColor() {
     /*if new quote is different from current quote
     then background-color is changed*/
     red = Math.floor(Math.random() * 256+1);
-    blue = Math.floor(Math.random() * 256+1);
+    blue = Math.floor(Math.random() * 180+1);
     green = Math.floor(Math.random() * 256+1);
     var color = 'rgba(' + red + ',' + green + ',' + blue + ',' + 0.9 + ')';
     var getContainer = document.getElementById('bgColor');
     getCurrentQuote = quotesShownArray[quotesShownArray.length-2];
     if (getQuote !== getCurrentQuote) {
     getContainer.style.backgroundColor = color;
+    }
+    console.log('New: ' + getQuote);
+    console.log('Previous: ' + getCurrentQuote);
+    picard();
+}
+
+function picard() {
+    // if conditional to addd/remove picard jpg
+    if (getQuote === quotes[2].quote && counter === 0) {
+        var getPicard = document.getElementById('picard');
+        var pic = document.createElement('img');
+        pic.innerHTML = '<img src="img/hrus_ex_picards_4_lights_dd.jpg">';
+        getPicard.appendChild(pic);
+        counter = 1;
+    }
+    if (getQuote != quotes[2].quote && counter === 1) {
+        var getPicard = document.getElementById('picard');
+        getPicard.firstChild.remove();
+        counter = 0;
     }
 }
 
@@ -70,9 +95,12 @@ function checkForRepeats() {
     // if (quoteShown is in quotesArray)
     // do not push it to quotesArray
     // get another random quote
-    for (var idx=0;idx<quotes.length;idx++) {
-
-    }
+    var counter = 0;
+    // for (var idx=0;idx<quotesShownArray.length;idx++) {
+    //     if (getQuote is in quotesShownArray){
+    //         getRandomQuote();
+    //      }
+    // }
      console.log('new quote: ' + getQuote);
      console.log('current quote: ' + getCurrentQuote);
 }

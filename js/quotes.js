@@ -16,8 +16,8 @@ var quotes = [
         source: 'Jean-Luc Picard',
         citation: 'Star Trek: The Next Generation, "Chain of Command", Season 6 Episode 11',
         year: 1992
-    },
-    {
+    }//,
+    /*{
         quote: 'Open the pod bay doors, HAL.',
         source: 'David Bowman',
         citation: '2001: A Space Odyssey',
@@ -33,7 +33,7 @@ var quotes = [
         citation: 'Aliens',
         year: 1986
     },{
-        quote: 'Before the use of machines, logging was slow going, inefficient & largely wasteful.',
+        quote: 'Before the use of machines, logging was small scale, wasteful and largely inefficient.',
         source: 'Display at the Museum of Natural History, Victoria, British Columbia'
-    }
+    }*/
 ];
