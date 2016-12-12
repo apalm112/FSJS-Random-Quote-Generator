@@ -77,7 +77,7 @@ function picard() {
     if (getQuote === quotes[2].quote && counter === 0) {
         var getPicard = document.getElementById('picard');
         var pic = document.createElement('img');
-        pic.innerHTML = '<img src="img/hrus_ex_picards_4_lights_dd.jpg">';
+        pic.setAttribute('src', 'img/hrus_ex_picards_4_lights_dd.jpg');
         getPicard.appendChild(pic);
         counter = 1;
     }
