@@ -1,23 +1,22 @@
 // Random Quote Generator for Treehouse Project #1
+// Global variables
 var getQuote;
 var getRQ;
 var source;
 var citation;
 var year;
-var quoteShown;
 var getCurrentQuote;
 var counter =0;
-
+var repeatCounter = 0;
 
 var quotesShownArray = [];  // array for Stretch Goal of not repeating quotes until all have been displayed
 
 function getRandomQuote() {
-    // selects random quote from quotes array
+    // creates a random number ranging from 1 to the length of the quotes array
     var rando = Math.floor(Math.random() * quotes.length);
-    // adds the selected quote to an array
-    var quoteShown = quotesShownArray.push( quotes[rando].quote );
-    // checkForRepeats(); stopping point here
+    // selects random quote from quotes array
     getQuote = quotes[rando].quote;
+    //checkForRepeats();
     return getQuote;
 }
 function getObjectProps() {
@@ -37,6 +36,8 @@ function getObjectProps() {
 function printQuote() {
     var getRQ = getRandomQuote();
     getObjectProps();
+    changeBackgroundColor();
+    picard();
     var template = '<p class="quote">' + getRQ + '</p>';
     template += '<p class="source">' + source;
     /*if statement prevents properties that the object does
@@ -50,9 +51,6 @@ function printQuote() {
     // printQuote puts final HTML string to the page using:
     var getQuoteBox = document.getElementById('quote-box');
     getQuoteBox.innerHTML = template;
-    changeBackgroundColor();
-    // checkForRepeats();
-
 }
 
 function changeBackgroundColor() {
@@ -66,14 +64,13 @@ function changeBackgroundColor() {
     getCurrentQuote = quotesShownArray[quotesShownArray.length-2];
     if (getQuote !== getCurrentQuote) {
     getContainer.style.backgroundColor = color;
+    console.log(color + '  ' + source);
     }
-    console.log('New: ' + getQuote);
-    console.log('Previous: ' + getCurrentQuote);
-    picard();
 }
 
 function picard() {
-    // if conditional to addd/remove picard jpg
+    //This function adds/removes a jpg to the page for the Picard quote.
+    // if conditional to addd picard jpg
     if (getQuote === quotes[2].quote && counter === 0) {
         var getPicard = document.getElementById('picard');
         var pic = document.createElement('img');
@@ -81,6 +78,7 @@ function picard() {
         getPicard.appendChild(pic);
         counter = 1;
     }
+    // if conditional to remove picard jpg when quote changes
     if (getQuote != quotes[2].quote && counter === 1) {
         var getPicard = document.getElementById('picard');
         getPicard.firstChild.remove();
@@ -90,24 +88,29 @@ function picard() {
 
 function checkForRepeats() {
     //TODO: stretch goal function to not repeat quotes until all quotes have been shown, use console.log();
-    // This function should: as each quote is added to quotesArray
-    // check to see if that quote is already in the quotesArray
-    // if (quoteShown is in quotesArray)
-    // do not push it to quotesArray
-    // get another random quote
-    var counter = 0;
-    // for (var idx=0;idx<quotesShownArray.length;idx++) {
-    //     if (getQuote is in quotesShownArray){
-    //         getRandomQuote();
-    //      }
-    // }
-     console.log('new quote: ' + getQuote);
-     console.log('current quote: ' + getCurrentQuote);
+    if (repeatCounter) {
+            if (quotesShownArray.includes(getQuote)) {
+                // get new quote
+                console.log('before: ' + getQuote);
+                getRandomQuote();
+                console.log('Wɘ Aᴙɘ ɘxqɘᴙiɘᴎↄiᴎg TɘↄHᴎiↄAl biꟻꟻiↄUlTiɘ﻿');
+            } else {
+                // adds the selected quote to an array
+                quotesShownArray.push( getQuote );
+                console.log('ELSE CLAUSE HERE TO PUSH TO ARRAY');
+            }
+    }
+    repeatCounter += 1;
+    getCurrentQuote = quotesShownArray[quotesShownArray.length-2];
+    console.log('Previous Quote: ' + getCurrentQuote);
+    console.log('New Quote: ' + getQuote);
 }
 
-// This do while loop runs once to load a random quote when the page is first loaded
+// This do while loop runs once to load a random quote when the page is first loaded & push that value to an array
 do {
     printQuote();
+    // adds the first selected quote to an array
+    quotesShownArray.push( getQuote );
 } while (false);
 
 // event listener to respond to "Show another quote" button clicks
