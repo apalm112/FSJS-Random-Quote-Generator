@@ -49,13 +49,13 @@ function getObjectProps() {
 }
 
 function printQuote() {
-    newQuote = getRandomQuote();
+    getRandomQuote();
     getObjectProps();
     changeBackgroundColor();
     picard();
     var template = '<p class="quote">' + newQuote + '</p>';
     template += '<p class="source">' + source;
-    /*if statement prevents properties that the object does
+    /*if statements prevents properties that the object does
     not have from being added to template*/
     if (citation) {
         template += '<span class="citation">' + citation + '</span>';
@@ -84,9 +84,9 @@ function changeBackgroundColor() {
     var getContainer = document.getElementById('bgColor');
     console.log('New Quote: ' + newQuote);
     //checks if new quote is different than the previous quote
-    if (newQuote !== previousQuote) {
+    // if (newQuote !== previousQuote) {
     getContainer.style.backgroundColor = color;
-    }
+    // }
 }
 
 function picard() {
@@ -106,8 +106,10 @@ function picard() {
         picardCounter = 0;
     }
 }
+//Timer to automatically refresh quotes
+var interval = window.setInterval(printQuote, 10000)
 
-// This do while loop runs once to load a random quote when the page is first loaded & push that value to an array
+// This do while loop runs once to load a random quote when the page is first loaded
 do {
     printQuote();
 } while (false);
@@ -115,6 +117,3 @@ do {
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-//Timer to automatically refresh quotes
-var interval = window.setInterval(printQuote, 10000)
