@@ -56,6 +56,14 @@ body {
   content: ", ";
   font-style: normal;
 }
+.media:before {
+  content: ", ";
+  font-style: normal;
+}
+.youTube:before {
+    content: ", ";
+  font-style: oblique;;
+}
 
 #loadQuote {
   position: fixed;
@@ -80,10 +88,9 @@ body {
 
 img {
     background-image: url(img/hrus_ex_picards_4_lights_dd.jpg) no-repeat;
-    margin: 400px 600px 0 0;
-    width: 500px;
-    height: 500px;
-
+    margin: 275px 600px 0 0;
+    width: 400px;
+    height: 400px;
 }
 
 @media (max-width: 420px) {
