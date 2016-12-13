@@ -5,6 +5,9 @@ var previousQuote;
 var source;
 var citation;
 var year;
+var media;
+var youTube;
+var link;
 var picardCounter = 0;
 var randomNumber;
 var previousRN;
@@ -33,11 +36,14 @@ function getObjectProps() {
     /*for in loop searches through the objects to find matching
     quote & then grabs that objects properties
     for the template*/
-    for (var key in quotes){
+    for (var key in quotes) {
         if (quotes[key].quote === newQuote){
             source = quotes[key].source;
             citation = quotes[key].citation;
             year = quotes[key].year;
+            media = quotes[key].media;
+            youTube = quotes[key].youTube;
+            link = quotes[key].link;
         }
     }
 }
@@ -52,11 +58,17 @@ function printQuote() {
     template += '<p class="source">' + source;
     /*if statement prevents properties that the object does
     not have from being added to template*/
-    if (citation){
+    if (citation) {
         template += '<span class="citation">' + citation + '</span>';
     }
     if (year) {
-    template += '<span class="year">' + year + '</span></p>';
+        template += '<span class="year">' + year + '</span>';
+    }
+    if (media) {
+        template += '<span class="media">' + media + '</span>';
+    }
+    if (youTube) {
+        template += '<span class="youTube"><a href="' + youTube + '" target="_blank">' + link + '</a></span></p>';
     }
     // printQuote puts final HTML string to the page using:
     var getQuoteBox = document.getElementById('quote-box');
@@ -113,3 +125,6 @@ do {
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+
+//Timer to automatically refresh quotes
+var interval = window.setInterval(printQuote, 10000)

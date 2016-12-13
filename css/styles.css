@@ -56,6 +56,14 @@ body {
   content: ", ";
   font-style: normal;
 }
+.media:before {
+  content: ", ";
+  font-style: normal;
+}
+.youTube:before {
+    content: ", ";
+  font-style: oblique;;
+}
 
 #loadQuote {
   position: fixed;
