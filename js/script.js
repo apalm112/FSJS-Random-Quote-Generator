@@ -1,22 +1,19 @@
 // Random Quote Generator for Treehouse Project #1
 // Global variables
 var newQuote;
-var getRQ;
+var previousQuote;
 var source;
 var citation;
 var year;
-var previousQuote;
-var counter = 0;
 var picardCounter = 0;
-var repeatCounter = 0;
 
 var quotesShownArray = [];  // array for Stretch Goal of not repeating quotes until all have been displayed
 
 function getRandomQuote() {
     // creates a random number ranging from 1 to the length of the quotes array
-    var rando = Math.floor(Math.random() * quotes.length);
+    var randomNumber = Math.floor(Math.random() * quotes.length);
     // selects random quote from quotes array
-    newQuote = quotes[rando].quote;
+    newQuote = quotes[randomNumber].quote;
     quotesShownArray.push( newQuote );
     // sets variable to the previous shown quote
     previousQuote = quotesShownArray[quotesShownArray.length-2];
@@ -36,36 +33,14 @@ function getObjectProps() {
     }
 }
 
-function limitArrayLength() {
-    // function to limit the length of quotesShownArray
-    if (quotesShownArray.length > 7) {
-        quotesShownArray = quotesShownArray.slice(quotes.length);
-    }
-}
-
-function randomizer() {
-    // function randomly mixes up the objects properties
-    do {
-        var rando = Math.floor(Math.random() * quotes.length);
-        // selects random quote from quotes array
-        newQuote = quotes[rando].quote;
-    } while (newQuote === previousQuote);
-}
-
-function checkForRepeats() {
-    //TODO: stretch goal function to not repeat quotes until all quotes have been shown, use console.log();
-    
-}
 
 function printQuote() {
-    var getRQ = getRandomQuote();
-    // checkForRepeats();
-    // randomizer();
+    newQuote = getRandomQuote();
     getObjectProps();
     changeBackgroundColor();
     picard();
-    //limitArrayLength();
-    var template = '<p class="quote">' + getRQ + '</p>';
+    // randomizer();
+    var template = '<p class="quote">' + newQuote + '</p>';
     template += '<p class="source">' + source;
     /*if statement prevents properties that the object does
     not have from being added to template*/
@@ -91,7 +66,6 @@ function changeBackgroundColor() {
     //checks if new quote is different than the previous quote
     if (newQuote !== previousQuote) {
     getContainer.style.backgroundColor = color;
-    previousQuote = quotesShownArray[quotesShownArray.length-2];
     }
 }
 
@@ -111,6 +85,15 @@ function picard() {
         getPicard.firstChild.remove();
         picardCounter = 0;
     }
+}
+
+function randomizer() {
+    // function randomly mixes up the objects properties
+    do {
+        var randomNumber = Math.floor(Math.random() * quotes.length);
+        // selects random quote from quotes array
+        newQuote = quotes[randomNumber].quote;
+    } while (newQuote === previousQuote);
 }
 
 // This do while loop runs once to load a random quote when the page is first loaded & push that value to an array
