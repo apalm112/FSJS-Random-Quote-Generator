@@ -15,12 +15,14 @@ var quotesShownArray = [];  // array for Stretch Goal of not repeating quotes un
 function getRandomQuote() {
     // creates a random number ranging from 1 to the length of the quotes array
     var rando = Math.floor(Math.random() * quotes.length);
+    console.log('First Rando: ' + rando);
     // selects random quote from quotes array
     newQuote = quotes[rando].quote;
 
     while (repeatCounter) {
         if (newQuote === previousQuote) {
             rando = Math.floor(Math.random() * quotes.length);
+            console.log('Second Rando: ' + rando);
             newQuote = quotes[rando].quote;
         } else {
             break;
@@ -43,11 +45,21 @@ function getObjectProps() {
     }
 }
 
+function limitArrayLength() {
+    // function to limit the length of quotesShownArray
+    if (quotesShownArray.length > 3) {
+        quotesShownArray = quotesShownArray.slice([-1]);
+    }
+}
+
+
+
 function printQuote() {
     var getRQ = getRandomQuote();
     getObjectProps();
     changeBackgroundColor();
     picard();
+    limitArrayLength();
     var template = '<p class="quote">' + getRQ + '</p>';
     template += '<p class="source">' + source;
     /*if statement prevents properties that the object does
@@ -77,8 +89,9 @@ function changeBackgroundColor() {
     //checks if new quote is different than the previous quote
     if (newQuote !== previousQuote) {
     getContainer.style.backgroundColor = color;
-    console.log(color + '  ' + source);
-    console.log(newQuote + '    ' + previousQuote);
+    previousQuote = quotesShownArray[quotesShownArray.length-2];
+    // console.log('Previous Quote: ' + previousQuote);
+    // console.log('New Quote: ' + newQuote);
     }
 }
 
@@ -115,15 +128,11 @@ function checkForRepeats() {
             }
     }
     repeatCounter += 1;
-    previousQuote = quotesShownArray[quotesShownArray.length-2];
-    console.log('Previous Quote: ' + previousQuote);
-    console.log('New Quote: ' + newQuote);
 }
 
 // This do while loop runs once to load a random quote when the page is first loaded & push that value to an array
 do {
     printQuote();
-    console.log('Do While Loop, execute once only!');
 } while (false);
 
 // event listener to respond to "Show another quote" button clicks
