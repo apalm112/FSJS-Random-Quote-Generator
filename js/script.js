@@ -6,17 +6,27 @@ var source;
 var citation;
 var year;
 var picardCounter = 0;
+var randomNumber;
+var previousRN;
 
 var quotesShownArray = [];  // array for Stretch Goal of not repeating quotes until all have been displayed
 
 function getRandomQuote() {
     // creates a random number ranging from 1 to the length of the quotes array
-    var randomNumber = Math.floor(Math.random() * quotes.length);
+    do {
+        randomNumber = Math.floor(Math.random() * quotes.length);
+    } while (randomNumber === previousRN);
+    console.log(randomNumber);
+    previousRN = randomNumber;
     // selects random quote from quotes array
     newQuote = quotes[randomNumber].quote;
-    quotesShownArray.push( newQuote );
-    // sets variable to the previous shown quote
-    previousQuote = quotesShownArray[quotesShownArray.length-2];
+    if (quotesShownArray.includes(newQuote)) {
+        //do not push it to array
+    } else {
+        quotesShownArray.push(newQuote);
+        // sets variable to the previous shown quote
+        previousQuote = quotesShownArray[quotesShownArray.length-2];
+    }
     return newQuote;
 }
 
@@ -32,7 +42,6 @@ function getObjectProps() {
         }
     }
 }
-
 
 function printQuote() {
     newQuote = getRandomQuote();
@@ -63,6 +72,7 @@ function changeBackgroundColor() {
     green = Math.floor(Math.random() * 256+1);
     var color = 'rgba(' + red + ',' + green + ',' + blue + ',' + 0.9 + ')';
     var getContainer = document.getElementById('bgColor');
+    console.log(color);
     //checks if new quote is different than the previous quote
     if (newQuote !== previousQuote) {
     getContainer.style.backgroundColor = color;
