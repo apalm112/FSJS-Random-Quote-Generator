@@ -18,7 +18,7 @@ body {
   line-height: 1.1;
   position: relative;
   margin: 0;
-  } 
+  }
 .quote:before, .quote:after {
   font-size: 6rem;
   line-height: 2.5rem;
@@ -76,6 +76,14 @@ body {
 }
 #loadQuote:focus {
   outline: none;
+}
+
+img {
+    background-image: url(img/hrus_ex_picards_4_lights_dd.jpg) no-repeat;
+    margin: 400px 600px 0 0;
+    width: 500px;
+    height: 500px;
+
 }
 
 @media (max-width: 420px) {

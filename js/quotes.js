@@ -25,6 +25,16 @@ var quotes = [
     },
     {
         quote: 'There is only one Lord of the Ring, only one who can bend it to his will, and he does not share power.',
-        source: 'Gandalf, a Wizard & jazz enthusiast'
+        source: 'Gandalf, a Wizard & jazz enthusiast',
+        citation: 'Lord Of The Rings'
+    },
+    {
+        quote: ' I say we take off and nuke the entire site from orbit. It\'s the only way to be sure.',
+        source: 'Ripley',
+        citation: 'Aliens',
+        year: 1986
+    },{
+        quote: 'Before the use of machines, logging was small scale, wasteful and largely inefficient.',
+        source: 'Display at the Museum of Natural History, Victoria, British Columbia'
     }
 ];
