@@ -12,14 +12,14 @@ var previousRN;
 var quotesShownArray = [];  // array for Stretch Goal of not repeating quotes until all have been displayed
 
 function getRandomQuote() {
-    // creates a random number ranging from 1 to the length of the quotes array & if number repeats then loops until they don't
+    // creates a random number ranging from 1 to the length of the quotes array & if number repeats then loops for a new number until they don't match
     do {
         randomNumber = Math.floor(Math.random() * quotes.length);
     } while (randomNumber === previousRN);
     previousRN = randomNumber;
     // selects random quote from quotes array
     newQuote = quotes[randomNumber].quote;
-    if (quotesShownArray.includes(newQuote) && quotesShownArray.length < 7) {
+    if (quotesShownArray.includes(newQuote) && quotesShownArray.length <= (quotes.length -1)) {
         getRandomQuote();
     } else {
         quotesShownArray.push(newQuote);
@@ -71,8 +71,6 @@ function changeBackgroundColor() {
     green = Math.floor(Math.random() * 256+1);
     var color = 'rgba(' + red + ',' + green + ',' + blue + ',' + 0.9 + ')';
     var getContainer = document.getElementById('bgColor');
-    console.log(color);
-    console.log('Previous Quote: ' + previousQuote);
     console.log('New Quote: ' + newQuote);
     //checks if new quote is different than the previous quote
     if (newQuote !== previousQuote) {
