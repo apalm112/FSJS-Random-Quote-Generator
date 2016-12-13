@@ -53,7 +53,6 @@ function printQuote() {
     getObjectProps();
     changeBackgroundColor();
     picard();
-    // randomizer();
     var template = '<p class="quote">' + newQuote + '</p>';
     template += '<p class="source">' + source;
     /*if statement prevents properties that the object does
@@ -106,15 +105,6 @@ function picard() {
         getPicard.firstChild.remove();
         picardCounter = 0;
     }
-}
-
-function randomizer() {
-    // function randomly mixes up the objects properties
-    do {
-        var randomNumber = Math.floor(Math.random() * quotes.length);
-        // selects random quote from quotes array
-        newQuote = quotes[randomNumber].quote;
-    } while (newQuote === previousQuote);
 }
 
 // This do while loop runs once to load a random quote when the page is first loaded & push that value to an array
