@@ -1,32 +1,22 @@
 // Random Quote Generator for Treehouse Project #1
 // Global variables
 var newQuote;
-var getRQ;
+var previousQuote;
 var source;
 var citation;
 var year;
-var previousQuote;
-var counter = 0;
 var picardCounter = 0;
-var repeatCounter = 0;
 
 var quotesShownArray = [];  // array for Stretch Goal of not repeating quotes until all have been displayed
 
 function getRandomQuote() {
     // creates a random number ranging from 1 to the length of the quotes array
-    var rando = Math.floor(Math.random() * quotes.length);
+    var randomNumber = Math.floor(Math.random() * quotes.length);
     // selects random quote from quotes array
-    newQuote = quotes[rando].quote;
-
-    while (repeatCounter) {
-        if (newQuote === previousQuote) {
-            rando = Math.floor(Math.random() * quotes.length);
-            newQuote = quotes[rando].quote;
-        } else {
-            break;
-        }
-    }
-    repeatCounter = 1;
+    newQuote = quotes[randomNumber].quote;
+    quotesShownArray.push( newQuote );
+    // sets variable to the previous shown quote
+    previousQuote = quotesShownArray[quotesShownArray.length-2];
     return newQuote;
 }
 
@@ -43,12 +33,14 @@ function getObjectProps() {
     }
 }
 
+
 function printQuote() {
-    var getRQ = getRandomQuote();
+    newQuote = getRandomQuote();
     getObjectProps();
     changeBackgroundColor();
     picard();
-    var template = '<p class="quote">' + getRQ + '</p>';
+    // randomizer();
+    var template = '<p class="quote">' + newQuote + '</p>';
     template += '<p class="source">' + source;
     /*if statement prevents properties that the object does
     not have from being added to template*/
@@ -71,14 +63,9 @@ function changeBackgroundColor() {
     green = Math.floor(Math.random() * 256+1);
     var color = 'rgba(' + red + ',' + green + ',' + blue + ',' + 0.9 + ')';
     var getContainer = document.getElementById('bgColor');
-    quotesShownArray.push( newQuote );
-    // sets variable to the previous shown quote
-    previousQuote = quotesShownArray[quotesShownArray.length-2];
     //checks if new quote is different than the previous quote
     if (newQuote !== previousQuote) {
     getContainer.style.backgroundColor = color;
-    console.log(color + '  ' + source);
-    console.log(newQuote + '    ' + previousQuote);
     }
 }
 
@@ -100,30 +87,18 @@ function picard() {
     }
 }
 
-function checkForRepeats() {
-    //TODO: stretch goal function to not repeat quotes until all quotes have been shown, use console.log();
-    if (repeatCounter) {
-            if (quotesShownArray.includes(newQuote)) {
-                // get new quote
-                console.log('before: ' + newQuote);
-                getRandomQuote();
-                console.log('Wɘ Aᴙɘ ɘxqɘᴙiɘᴎↄiᴎg TɘↄHᴎiↄAl biꟻꟻiↄUlTiɘ﻿');
-            } else {
-                // adds the selected quote to an array
-                quotesShownArray.push( newQuote );
-                console.log('ELSE CLAUSE HERE TO PUSH TO ARRAY');
-            }
-    }
-    repeatCounter += 1;
-    previousQuote = quotesShownArray[quotesShownArray.length-2];
-    console.log('Previous Quote: ' + previousQuote);
-    console.log('New Quote: ' + newQuote);
+function randomizer() {
+    // function randomly mixes up the objects properties
+    do {
+        var randomNumber = Math.floor(Math.random() * quotes.length);
+        // selects random quote from quotes array
+        newQuote = quotes[randomNumber].quote;
+    } while (newQuote === previousQuote);
 }
 
 // This do while loop runs once to load a random quote when the page is first loaded & push that value to an array
 do {
     printQuote();
-    console.log('Do While Loop, execute once only!');
 } while (false);
 
 // event listener to respond to "Show another quote" button clicks
