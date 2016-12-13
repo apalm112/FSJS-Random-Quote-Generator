@@ -14,9 +14,21 @@ function getRandomQuote() {
     var randomNumber = Math.floor(Math.random() * quotes.length);
     // selects random quote from quotes array
     newQuote = quotes[randomNumber].quote;
+//    quotesShownArray.push( newQuote );
     // sets variable to the previous shown quote
     previousQuote = quotesShownArray[quotesShownArray.length-2];
     return newQuote;
+}
+
+function checkForRepeats() {
+    // function tracks quotesShownArray & whether or not a quote has been displayed
+    if (quotesShownArray.includes(newQuote) !== true) {
+        quotesShownArray.push( newQuote );
+        previousQuote = quotesShownArray[quotesShownArray.length-2];
+    } else {
+        // sets variable to the previous shown quote
+        previousQuote = quotesShownArray[quotesShownArray.length-2];
+    }
 }
 
 function getObjectProps() {
@@ -29,15 +41,6 @@ function getObjectProps() {
             citation = quotes[key].citation;
             year = quotes[key].year;
         }
-    }
-}
-
-function checkForRepeats() {
-    // function tracks quotesShownArray & whether or not a quote has been displayed
-    if (quotesShownArray.includes(newQuote) !== true) {
-        quotesShownArray.push( newQuote );
-        previousQuote = quotesShownArray[quotesShownArray.length-2];
-    } else {
     }
 }
 
@@ -71,6 +74,7 @@ function changeBackgroundColor() {
     green = Math.floor(Math.random() * 256+1);
     var color = 'rgba(' + red + ',' + green + ',' + blue + ',' + 0.9 + ')';
     var getContainer = document.getElementById('bgColor');
+    console.log(color);
     //checks if new quote is different than the previous quote
     if (newQuote !== previousQuote) {
     getContainer.style.backgroundColor = color;
