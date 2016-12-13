@@ -5,7 +5,7 @@ var quotes = [
         citation: 'Seinfeld, "The Stike", Season 9 Episode 10',
         year: 1997,
         media: 'Television',
-        youTube: '',
+        youTube: 'https://youtu.be/HX55AzGku5Y?t=57s',
         link : 'Festivus'
 
     },
@@ -15,7 +15,7 @@ var quotes = [
         citation: 'The Simpsons, "The PTA Disbands", Season 6 Episode 21',
         year: 1994,
         media: 'Television',
-        youTube: '',
+        youTube: 'https://youtu.be/Xwwm8NDH9Ls',
         link : 'Bart'
     },
     {
@@ -24,7 +24,7 @@ var quotes = [
         citation: 'Star Trek: The Next Generation, "Chain of Command", Season 6 Episode 11',
         year: 1992,
         media: 'Television',
-        youTube: '',
+        youTube: 'https://youtu.be/EAdGhMRBbzY',
         link : 'Cardassian'
     },
     {
