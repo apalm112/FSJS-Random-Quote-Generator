@@ -14,7 +14,6 @@ function getRandomQuote() {
     var randomNumber = Math.floor(Math.random() * quotes.length);
     // selects random quote from quotes array
     newQuote = quotes[randomNumber].quote;
-    quotesShownArray.push( newQuote );
     // sets variable to the previous shown quote
     previousQuote = quotesShownArray[quotesShownArray.length-2];
     return newQuote;
@@ -33,9 +32,18 @@ function getObjectProps() {
     }
 }
 
+function checkForRepeats() {
+    // function tracks quotesShownArray & whether or not a quote has been displayed
+    if (quotesShownArray.includes(newQuote) !== true) {
+        quotesShownArray.push( newQuote );
+        previousQuote = quotesShownArray[quotesShownArray.length-2];
+    } else {
+    }
+}
 
 function printQuote() {
     newQuote = getRandomQuote();
+    checkForRepeats();
     getObjectProps();
     changeBackgroundColor();
     picard();
