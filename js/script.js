@@ -84,9 +84,7 @@ function changeBackgroundColor() {
     var getContainer = document.getElementById('bgColor');
     console.log('New Quote: ' + newQuote);
     //checks if new quote is different than the previous quote
-    // if (newQuote !== previousQuote) {
     getContainer.style.backgroundColor = color;
-    // }
 }
 
 function picard() {
