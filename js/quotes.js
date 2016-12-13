@@ -29,7 +29,7 @@ var quotes = [
         citation: 'Lord Of The Rings'
     },
     {
-        quote: ' I say we take off and nuke the entire site from orbit. It\'s the only way to be sure.',
+        quote: 'I say we take off and nuke the entire site from orbit. It\'s the only way to be sure.',
         source: 'Ripley',
         citation: 'Aliens',
         year: 1986
