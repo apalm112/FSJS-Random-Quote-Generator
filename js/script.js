@@ -80,16 +80,14 @@ function printQuote() {
 }
 
 function changeBackgroundColor() {
-    /*if new quote is different from current quote
-    then background-color is changed*/
+    // randomly selects a new background color when quote is changed
     red = Math.floor(Math.random() * 256+1);
     blue = Math.floor(Math.random() * 180+1);
     green = Math.floor(Math.random() * 256+1);
     var color = 'rgba(' + red + ',' + green + ',' + blue + ',' + 0.9 + ')';
     var getContainer = document.getElementById('bgColor');
-    console.log('New Quote: ' + newQuote);
-    //checks if new quote is different than the previous quote
     getContainer.style.backgroundColor = color;
+    console.log('New Quote: ' + newQuote);
 }
 
 function picard() {

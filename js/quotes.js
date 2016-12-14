@@ -50,7 +50,8 @@ var quotes = [
         citation: 'Aliens',
         year: 1986,
         media: 'Movie'
-    },{
+    },
+    {
         quote: 'Before the use of machines, logging was small scale, wasteful and largely inefficient.',
         source: 'Museum of Natural History, Victoria, British Columbia',
         media: 'Exhibit sign'
