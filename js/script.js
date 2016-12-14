@@ -114,7 +114,7 @@ function picard() {
     }
 }
 //Timer to automatically refresh quotes
-var interval = window.setInterval(printQuote, 10000);
+//var interval = window.setInterval(printQuote, 10000);
 
 // This do while loop runs once to load a random quote when the page is first loaded
 do {
