@@ -14,24 +14,21 @@ var previousRN;
 
 var quotesShownArray = [];  // array for Stretch Goal of not repeating quotes until all have been displayed
 
-/*
-    Extra Stretch Goals:  Addend after 1st project submission from feedback in slack project-01 channel.
-    However if you do one small tweak it won't show repeat quotes on any subsequent run through of the quotes, ie on the second run through of the quotes, it wouldn't show a quote that has been shown in that run through. You would need to empty your quoteShownArray after it is full to do that. I also recommend trying JShint. It is so helpful because it will show you any syntax errors in red.
-*/
-
-
-
-
 function getRandomQuote() {
-    // creates a random number ranging from 1 to the length of the quotes array & if number repeats then loops for a new number until they don't match
+    // creates a random number ranging from 1 to the length of the quotes array & if number repeats then loop for a new number until they don't match, if array length is same as number of quotes, then it is emptied so the quotes will not repeat in a cycle until all have been displayed.
     do {
         randomNumber = Math.floor(Math.random() * quotes.length);
+    // conditional makes it so the same quote index won't be picked twice
     } while (randomNumber === previousRN);
     previousRN = randomNumber;
     // selects random quote from quotes array
     newQuote = quotes[randomNumber].quote;
+    // if quote has been shown And not all quotes have been shown, get a new quote
     if (quotesShownArray.includes(newQuote) && quotesShownArray.length <= (quotes.length -1)) {
         getRandomQuote();
+        // if all the quotes have been shown, empty the array & start over to not repeat quotes
+    } else if (quotesShownArray.length === (quotes.length -1)) {
+            quotesShownArray = [];
     } else {
         quotesShownArray.push(newQuote);
         // sets variable to the previous shown quote
@@ -114,7 +111,7 @@ function picard() {
     }
 }
 //Timer to automatically refresh quotes
-//var interval = window.setInterval(printQuote, 10000);
+var interval = window.setInterval(printQuote, 6000);
 
 // This do while loop runs once to load a random quote when the page is first loaded
 do {
