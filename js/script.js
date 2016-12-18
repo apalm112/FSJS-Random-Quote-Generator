@@ -99,21 +99,15 @@ function changeBackgroundColor() {
 function picard() {
     //This function adds/removes a jpg to the page for the Picard quote.
     //Refactor to add div dynamically w/ jQuery
-    var $picardDiv = $('<div id="picard"></div>');
     var $picardImg = $('<img>');
     // if conditional to addd picard jpg
     if (newQuote === quotes[2].quote && picardCounter === 0) {
         $('#bgColor').append($picardImg);
-
-        //getPicard = document.getElementById('picard');
-        //var pic = document.createElement('img');
-        //$picardDiv.append($picardImg);
         $picardImg.attr('src', 'img/hrus_ex_picards_4_lights_dd.jpg');
         picardCounter = 1;
     }
     // if conditional to remove picard jpg when quote changes
     if (newQuote != quotes[2].quote && picardCounter === 1) {
-        //picardImg = document.setElementById('picard');
         $('img').remove();
         picardCounter = 0;
     }
@@ -121,10 +115,9 @@ function picard() {
 //Timer to automatically refresh quotes
 var interval = window.setInterval(printQuote, 6000);
 
-// This do while loop runs once to load a random quote when the page is first loaded
-do {
+$(document).ready(function(){
     printQuote();
-} while (false);
+});
 
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
