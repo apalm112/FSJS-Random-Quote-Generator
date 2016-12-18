@@ -98,16 +98,12 @@ function changeBackgroundColor() {
 
 function picard() {
     //This function adds/removes a jpg to the page for the Picard quote.
-    //Refactor to add div dynamically w/ jQuery
     var $picardImg = $('<img>');
-    // if conditional to addd picard jpg
     if (newQuote === quotes[2].quote && picardCounter === 0) {
         $('#bgColor').append($picardImg);
         $picardImg.attr('src', 'img/hrus_ex_picards_4_lights_dd.jpg');
         picardCounter = 1;
-    }
-    // if conditional to remove picard jpg when quote changes
-    if (newQuote != quotes[2].quote && picardCounter === 1) {
+    } else {
         $('img').remove();
         picardCounter = 0;
     }
