@@ -15,7 +15,7 @@ var previousRN;
 var quotesShownArray = [];  // array for Stretch Goal of not repeating quotes until all have been displayed
 
 function getRandomQuote() {
-    // creates a random number ranging from 1 to the length of the quotes array & if number repeats then loop for a new number until they don't match, if array length is same as number of quotes, then it is emptied so the quotes will not repeat in a cycle until all have been displayed.
+    // creates a random number ranging from 1 to the length of the quotes array & if number repeats then loop for a new number until they don't match
     do {
         randomNumber = Math.floor(Math.random() * quotes.length);
     // conditional makes it so the same quote index won't be picked twice
@@ -23,6 +23,12 @@ function getRandomQuote() {
     previousRN = randomNumber;
     // selects random quote from quotes array
     newQuote = quotes[randomNumber].quote;
+    checkQuoteForRepeat();
+    return newQuote;
+}
+
+function checkQuoteForRepeat() {
+    //function to check that quotes are not repeated in a cycle
     // if quote has been shown And not all quotes have been shown, get a new quote
     if (quotesShownArray.includes(newQuote) && quotesShownArray.length <= (quotes.length -1)) {
         getRandomQuote();
