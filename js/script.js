@@ -97,20 +97,24 @@ function changeBackgroundColor() {
 }
 
 function picard() {
-    var getPicard;
     //This function adds/removes a jpg to the page for the Picard quote.
+    //Refactor to add div dynamically w/ jQuery
+    var $picardDiv = $('<div id="picard"></div>');
+    var $picardImg = $('<img>');
     // if conditional to addd picard jpg
     if (newQuote === quotes[2].quote && picardCounter === 0) {
-        getPicard = document.getElementById('picard');
-        var pic = document.createElement('img');
-        pic.setAttribute('src', 'img/hrus_ex_picards_4_lights_dd.jpg');
-        getPicard.appendChild(pic);
+        $('#bgColor').append($picardImg);
+
+        //getPicard = document.getElementById('picard');
+        //var pic = document.createElement('img');
+        //$picardDiv.append($picardImg);
+        $picardImg.attr('src', 'img/hrus_ex_picards_4_lights_dd.jpg');
         picardCounter = 1;
     }
     // if conditional to remove picard jpg when quote changes
     if (newQuote != quotes[2].quote && picardCounter === 1) {
-        getPicard = document.getElementById('picard');
-        getPicard.firstChild.remove();
+        //picardImg = document.setElementById('picard');
+        $('img').remove();
         picardCounter = 0;
     }
 }
