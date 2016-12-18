@@ -64,25 +64,28 @@ function printQuote() {
     getObjectProps();
     changeBackgroundColor();
     picard();
-    var template = '<p class="quote">' + newQuote + '</p>';
-    template += '<p class="source">' + source;
+    // var template = '<p class="quote">' + newQuote + '</p>';
+    var $template = $('<p class="quote">' + newQuote + '</p>');
+    $template += '<p class="source">' + source;
+
     /*if statements prevents properties that the object does
     not have from being added to template*/
     if (citation) {
-        template += '<span class="citation">' + citation + '</span>';
+        $template += '<span class="citation">' + citation + '</span>';
     }
     if (year) {
-        template += '<span class="year">' + year + '</span>';
+        $template += '<span class="year">' + year + '</span>';
     }
     if (media) {
-        template += '<span class="media">' + media + '</span>';
+        $template += '<span class="media">' + media + '</span>';
     }
     if (youTube) {
-        template += '<span class="youTube"><a href="' + youTube + '" target="_blank">' + link + '</a></span></p>';
+        $template += '<span class="youTube"><a href="' + youTube + '" target="_blank">' + link + '</a></span></p>';
     }
     // printQuote puts final HTML string to the page using:
-    var getQuoteBox = document.getElementById('quote-box');
-    getQuoteBox.innerHTML = template;
+    // var getQuoteBox = document.getElementById('quote-box');
+    // getQuoteBox.innerHTML = $template;
+    $('#quote-box').html($template);
 }
 
 function changeBackgroundColor() {
@@ -91,8 +94,7 @@ function changeBackgroundColor() {
     blue = Math.floor(Math.random() * 180+1);
     green = Math.floor(Math.random() * 256+1);
     var color = 'rgba(' + red + ',' + green + ',' + blue + ',' + 0.9 + ')';
-    var getContainer = document.getElementById('bgColor');
-    getContainer.style.backgroundColor = color;
+    $('#bgColor').css('background-color', color);
     console.log('New Quote: ' + newQuote);
 }
 
@@ -108,6 +110,7 @@ function picard() {
         picardCounter = 0;
     }
 }
+
 //Timer to automatically refresh quotes
 var interval = window.setInterval(printQuote, 6000);
 
