@@ -64,8 +64,7 @@ function printQuote() {
     getObjectProps();
     changeBackgroundColor();
     picard();
-    // var template = '<p class="quote">' + newQuote + '</p>';
-    var $template = $('<p class="quote">' + newQuote + '</p>');
+    var $template = ('<p class="quote">' + newQuote + '</p>');
     $template += '<p class="source">' + source;
 
     /*if statements prevents properties that the object does
