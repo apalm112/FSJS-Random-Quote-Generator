@@ -25,7 +25,7 @@ var quotes = [
         year: 1992,
         media: 'Television',
         youTube: 'https://youtu.be/EAdGhMRBbzY',
-        link : 'Cardassian'
+        link : 'Cardassian, Gul Madred'
     },
     {
         quote: 'Open the pod bay doors, HAL.',
